@@ -11,7 +11,7 @@ image:
   # SHA-pinned. .github/workflows/build.yml rewrites this tag on every push to main
   # via a `[skip ci]` follow-up commit. Quoted so all-digit short-SHAs don't
   # become floats — see reference_yaml_tag_quoting.md.
-  tag: "68039d5"
+  tag: "0817f78"
   pullPolicy: IfNotPresent
 
 # Loopback-only port the Python uvicorn server listens on.
