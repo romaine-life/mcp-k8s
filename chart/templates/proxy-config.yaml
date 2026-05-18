@@ -1,6 +1,7 @@
-# Same pattern as mcp-github / mcp-azure: synthetic resource
-# (mcp.tank-operator.io/servers named "k8s") gates SubjectAccessReview,
-# ClusterRole + RoleBinding names allowed callers explicitly.
+# Same pattern as mcp-github / mcp-azure / mcp-argocd: synthetic
+# resource (mcp.tank-operator.io/servers named "k8s") gates
+# SubjectAccessReview, ClusterRole + RoleBinding names allowed callers
+# explicitly.
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -40,3 +41,10 @@ subjects:
   - kind: ServiceAccount
     name: claude-session
     namespace: tank-operator-sessions
+  # Hermes (`nelsong6/hermes`) is a singleton AI-agent StatefulSet that
+  # calls Tank's in-cluster MCP servers from its own pod via the same
+  # mcp-auth-proxy sidecar shape Tank session pods use. See
+  # nelsong6/tank-operator#540.
+  - kind: ServiceAccount
+    name: hermes
+    namespace: hermes
